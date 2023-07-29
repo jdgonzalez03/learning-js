@@ -10,7 +10,8 @@ const itTask = document.querySelector('#itTask');
 const form = document.querySelector('#form');
 // const taskName = document.querySelector('#time #taskName');
 
-
+getTime();
+getTasks();
 
 form.addEventListener('submit', e => {
     let taskValue = itTask.value;
@@ -38,15 +39,15 @@ function createTask(inputValue) {
 function getTasks() {
     const html = tasks.map(task => {
         return `
-            <div class='task'>
-                <div class='completed'>
-                   ${task.completed 
-                    ? `<span class='done>Done</span>` 
-                    : `<button class="start-button" data-id="${task.id}">Start!</button>`}
-                </div>
-                <div class='title'>${task.title}</div>
-            </div>
-        `
+        <div class="task">
+        <div class="completed">${
+          task.completed
+            ? "<span class='done'>Done</span>"
+            : `<button class="start-button" data-id="${task.id}">Start</button></div>`
+        }
+            <div class="title">${task.title}</div>
+        </div>`;
+    
     });
 
     const tasksContainer = document.querySelector('#tasks');
@@ -85,10 +86,11 @@ function timeHandler(id){
     getTime(id);
 
     if (time === 0){
-        clearInterval(time);
-        currentTask = null;
-        taskName.textContent = '';
-        getTime(id);
+        clearInterval(timer);
+        timer = null;
+        markCompleted(id);
+        startBreak(id);
+        getTasks(id);
     }
 }
 
@@ -98,4 +100,30 @@ function getTime(id){
     const seconds = parseInt(time % 60);
 
     timeDiv.textContent = `${minutes < 10 ? '0' : ""}${minutes}: ${seconds < 10 ? '0' : ""}${seconds}`;
+}
+
+function markCompleted(id){
+    const taskId = tasks.findIndex((task) => task.id === id);
+    tasks[taskId].completed = true;
+}
+
+function startBreak(id){
+    time = 5 * 60;
+    taskName.textContent = 'Break';
+    timerBreak = setInterval(() =>{
+        timeBreakHandler(id);
+    });
+}
+
+function timeBreakHandler(id){
+    time --;
+    getTime(id);
+
+    if (time === 0){
+        clearInterval(timerBreak);
+        timerBreak = null;
+        current = null;
+        taskName.textContent = '';
+        getTime(id);
+    }
 }
