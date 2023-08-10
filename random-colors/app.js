@@ -1,9 +1,7 @@
-//Seleccionando elementos del DOM
 
 const btn = document.getElementById('btn-color');
 const color = document.getElementById('color');
 
-//Generate random color hex
 
 function generateRandomColorHex(){
     let digits = '0123456789ABCDEF';
@@ -19,10 +17,8 @@ function generateRandomColorHex(){
 
 btn.addEventListener('click', () => {
     let randomColor = generateRandomColorHex();
-    //Update text.
     color.textContent = randomColor;
 
-    //Update background color
     document.body.style.backgroundColor = randomColor;
 });
 
