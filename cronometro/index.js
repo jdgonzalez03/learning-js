@@ -31,6 +31,14 @@ function asignarFormato(tiempo) {
 	return tiempo < 10 ? '0' + tiempo : tiempo;
 }
 
+function clearCronometro (){
+  window.clearInterval(intervaloTiempo);
+	btnInicioPausa.innerHTML = '<i class="bi bi-play-fill"></i>';
+	btnInicioPausa.classList.remove('pausar');
+	btnInicioPausa.classList.add('iniciar');
+	estadoCronometro = 'pausado';
+}
+
 btnInicioPausa.addEventListener('click', function () {
 	if (estadoCronometro === 'pausado') {
 		//Timer -> actualizar el cronometro cada 1000 ms
@@ -41,11 +49,15 @@ btnInicioPausa.addEventListener('click', function () {
 
 		estadoCronometro = 'contando';
 	} else {
-		window.clearInterval(intervaloTiempo);
-		btnInicioPausa.innerHTML = '<i class="bi bi-play-fill"></i>';
-		btnInicioPausa.classList.remove('pausar');
-		btnInicioPausa.classList.add('iniciar');
-
-		estadoCronometro = 'pausado';
+		clearCronometro();
 	}
 });
+
+btnReiniciar.addEventListener('click', function (){
+  horas = 0;
+  minutos = 0;
+  segundos = 0;
+  cronometro.innerText = '00:00:00';
+  clearCronometro();
+});
+
