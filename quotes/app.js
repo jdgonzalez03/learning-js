@@ -1,4 +1,3 @@
-
 let botonElem = document.getElementById('btn-cambiar-cita');
 let citaElem = document.getElementById('cita');
 let autorElem = document.getElementById('autor');
