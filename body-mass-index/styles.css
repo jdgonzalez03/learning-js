@@ -19,56 +19,42 @@ body {
   
 }
 
-.contenedor{
-  width: 80vw;
-  padding: 20px;
-  max-width: 600px;
-  min-height: 500px;
+.contenedor {
   background-color: white;
-  border: 5px solid black;
-  border-radius: 30px;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  width: 80vw;
+  max-width: 600px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
+  gap: 15px;
 }
 
-h1{
-  width: 100%;
-  font-size: 25px;
-  font-weight: bold;
-  margin: 20px;
-  padding: 20px;
-}
-
-.input-contendor{
-  width: 100%;
-  margin: 20px;
-  padding: 20px;
+.input-contenedor{
+  margin-top: 20px;
+  width: 80%;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.input-contendor input{
-  height: 40px;
-  padding: 10px;
+input {
+  padding: 5px;
+  width: 100%;
+  text-align: center;
 }
 
 button{
-  height: 40px;
   width: 150px;
+  height: 30px;
   font-size: 16px;
-  border: 1px solid black;
-  border-radius: 10px;
   cursor: pointer;
-}
-
-.resultado{
-  margin-top: 20px;
-  height: 50px;
-  text-align: center;
-  font-family: cursive;
-  font-style: italic;
 }
