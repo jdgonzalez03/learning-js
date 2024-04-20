@@ -22,3 +22,8 @@
 6. **Toppings Pizza Builder**
    Crea tu pizza personalizada seleccionando ingredientes. Aprende a capturar selecciones del usuario y actualizar la interfaz en consecuencia.
 
+ 7. **Citas Aleatorias**
+
+   En esta sección, exploramos una selección diversa de citas inspiradoras y reflexiones motivadoras, elegidas al azar para brindarte una dosis de sabiduría en cada visita. Déjate sorprender por las palabras que encontrarás aquí.
+
+## Esto es una prueba
