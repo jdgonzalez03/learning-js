@@ -1,4 +1,5 @@
 const listPokemon = document.querySelector("#listaPokemon");
+const botonesHeader = document.querySelectorAll(".btn-header");
 
 let base_url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -9,7 +10,15 @@ for (let i = 1; i <= 151; i++) {
 }
 
 function mostrarPokemon(pokemon) {
-  const id = pokemon.id;
+  let id;
+  if (pokemon.id < 10) {
+    id = `00${pokemon.id}`;
+  } else if (pokemon.id > 9 && pokemon.id < 100) {
+    id = `0${pokemon.id}`;
+  } else {
+    id = pokemon.id;
+  }
+
   const name = pokemon.name;
   const height = pokemon.height;
   const weight = pokemon.weight;
@@ -50,3 +59,26 @@ function mostrarPokemon(pokemon) {
 
   listPokemon.appendChild(article);
 }
+
+botonesHeader.forEach((btn) =>
+  btn.addEventListener("click", (event) => {
+    const botonId = event.currentTarget.id;
+    console.log(botonId);
+    listPokemon.innerHTML = "";
+
+    for (let i = 1; i <= 151; i++) {
+      fetch(base_url + i)
+        .then((response) => response.json())
+        .then((data) => {
+          if (botonId === "ver-todos") {
+            mostrarPokemon(data);
+          } else {
+            const tipos = data.types.map((type) => type.type.name);
+            if (tipos.some((tipo) => tipo.includes(botonId))) {
+              mostrarPokemon(data);
+            }
+          }
+        });
+    }
+  })
+);
